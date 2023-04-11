@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('customer.index');
+// });
+
+Route::resource('/products', ProductController::class);
+Route::resource('/customers', CustomerController::class);
+Route::resource('/orderdetail', OrderDetailController::class);
+Route::resource('/orders', OrderController::class);
