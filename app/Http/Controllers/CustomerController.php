@@ -57,7 +57,7 @@ class CustomerController extends Controller
         $orders = Order::where('customer_id', $id)->get()->toJson();
         return view('customer.show')
             ->with('customer', json_decode($customer))
-            ->with('orders', $orders);
+            ->with('orders', json_decode($orders));
     }
 
     /**
@@ -87,7 +87,7 @@ class CustomerController extends Controller
             'alert_type' => 'success'
         );
 
-        return redirect()->route('customers.index')->with('notification', $notification);
+        return redirect()->route('customers.show', $id)->with('notification', $notification);
     }
 
     /**

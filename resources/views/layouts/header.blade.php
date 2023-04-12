@@ -12,23 +12,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                    <a class="nav-link " href="/">Home</a>
+                    <a class="nav-link " href="">Home</a>
                 </li>
 
                 <li class="nav-item {{ request()->is('customers') || request()->is('customers/*') ? 'active' : '' }}">
-                    <a class="nav-link" href="customers">Customers</a>
+                    <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#portfolio">Portfolio</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#news">News & Events</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                <li class="nav-item {{ request()->is('products') || request()->is('products/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                 </li>
             </ul>
         </div>

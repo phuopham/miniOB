@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('type')->default('sell');
             $table->string('note')->nullable();
             $table->string('status')->default('created');
+            $table->double('ship_price')->default(0);
             $table->timestamps();
         });
     }
