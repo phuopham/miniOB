@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained();
+            $table->string('type')->default('sell');
             $table->string('note')->nullable();
             $table->string('status')->default('created');
             $table->timestamps();

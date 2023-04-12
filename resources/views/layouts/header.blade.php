@@ -12,14 +12,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                    <a class="nav-link " href="#hero">Home</a>
+                    <a class="nav-link " href="/">Home</a>
                 </li>
 
-                <li class="nav-item {{ request()->is('customers/*') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is('customers') || request()->is('customers/*') ? 'active' : '' }}">
                     <a class="nav-link" href="customers">Customers</a>
                 </li>
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="#portfolio">Portfolio</a>
                 </li>
 
@@ -29,7 +29,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Contact Us</a>
-                </li> --}}
+                </li>
             </ul>
         </div>
     </div>

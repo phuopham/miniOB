@@ -17,9 +17,9 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('customer.index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);

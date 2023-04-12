@@ -19,7 +19,7 @@
         rel="stylesheet">
 
     <link href="{{ URL('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ URL('css/bootstrap-icons.css') }}" rel="stylesheet">
+    {{-- <link href="{{ URL('css/bootstrap-icons.css') }}" rel="stylesheet"> --}}
 
     {{-- <link rel="stylesheet" href="css/magnific-popup.css"> --}}
 
@@ -33,14 +33,14 @@
     <header>
         @include('layouts.header')
     </header>
-    <main>
+    <main class="container">
 
         @yield('content')
 
     </main>
-    <footer>
+    {{-- <footer>
         @include('layouts.footer')
-    </footer>
+    </footer> --}}
 
     <script src="{{ URL('js/bootstrap.bundle.min.js') }}"></script>
 

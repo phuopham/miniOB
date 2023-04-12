@@ -17,6 +17,8 @@ class Customer extends Model
         'note'
     ];
 
+    protected $guarded = array('id');
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
