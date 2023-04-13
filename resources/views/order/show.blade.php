@@ -8,11 +8,9 @@
     <div class="d-flex row">
         <p class="col-2 form-label">Name</p>
         <p class="col-9">{{ $order->name }}</p>
-        <p class="col-2 form-label">Address</p>
-        <p class="col-9">{{ $order->address }}</p>
-        <p class="col-2 form-label">Phone</p>
-        <p class="col-9">{{ $order->phone }}</p>
-        <p class="col-2 form-label">Note</p>
-        <p class="col-9">{{ $order->note }}</p>
+        <p class="col-2 form-label">Description</p>
+        <p class="col-9">{{ $order->description ?? '' }}</p>
+        <p class="col-2 form-label">Price</p>
+        <p class="col-9">{{ $order->price }}</p>
     </div>
 @endsection

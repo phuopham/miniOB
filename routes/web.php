@@ -23,5 +23,6 @@ Route::get('/', function () {
 
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
-Route::resource('/orderdetail', OrderDetailController::class);
+// Route::resource('/orderdetail', OrderDetailController::class);
+Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 Route::resource('/orders', OrderController::class);

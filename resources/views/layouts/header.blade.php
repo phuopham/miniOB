@@ -22,6 +22,9 @@
                 <li class="nav-item {{ request()->is('products') || request()->is('products/*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                 </li>
+                <li class="nav-item {{ request()->is('orders') || request()->is('orders/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('orders.index') }}">Orders</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -43,7 +43,7 @@
     </footer> --}}
 
     <script src="{{ URL('js/bootstrap.bundle.min.js') }}"></script>
-
+    @yield('javascript')
 </body>
 
 </html>

@@ -17,11 +17,11 @@
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
-                    <td>{{ $customer['id'] }}</td>
-                    <td>{{ $customer['name'] }}</td>
-                    <td>{{ $customer['address'] }}</td>
-                    <td>{{ $customer['phone'] }}</td>
-                    <td>{{ $customer['note'] }}</td>
+                    <td>{{ $customer->id }}</td>
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->address }}</td>
+                    <td>{{ $customer->phone }}</td>
+                    <td>{{ $customer->note }}</td>
                     <td><a class="btn btn-primary" href="{{ route('customers.show', $customer['id']) }}">View</a>
                         <a class="btn btn-warning" href="{{ route('customers.edit', $customer['id']) }}">Edit</a>
                     </td>

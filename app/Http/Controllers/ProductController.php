@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->toJson();
-        return view('product.index')->with('products', json_decode($products));
+        $products = Product::all();
+        return view('product.index')->with('products', $products);
     }
 
     /**
@@ -51,11 +51,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id)->toJson();
-        $orders = OrderDetail::where('product_id', $id)->get()->toJson();
+        $product = Product::find($id);
+        $orders = OrderDetail::where('product_id', $id)->get();
         return view('product.show')
-            ->with('product', json_decode($product))
-            ->with('orders', json_decode($orders));
+            ->with('product', $product)
+            ->with('orders', $orders);
     }
 
     /**
@@ -63,9 +63,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id)->toJson();
+        $product = Product::find($id);
         return view('product.edit')
-            ->with('product', json_decode($product));
+            ->with('product', $product);
     }
 
     /**

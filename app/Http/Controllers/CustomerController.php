@@ -15,7 +15,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all()->toArray();
+        $customers = Customer::all();
         return view('customer.index')->with('customers', $customers);
     }
 
@@ -53,11 +53,11 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $customer = Customer::find($id)->toJson();
-        $orders = Order::where('customer_id', $id)->get()->toJson();
+        $customer = Customer::find($id);
+        $orders = Order::where('customer_id', $id)->get();
         return view('customer.show')
-            ->with('customer', json_decode($customer))
-            ->with('orders', json_decode($orders));
+            ->with('customer', $customer)
+            ->with('orders', $orders);
     }
 
     /**
@@ -65,9 +65,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id)->toJson();
+        $customer = Customer::find($id);
         return view('customer.edit')
-            ->with('customer', json_decode($customer));
+            ->with('customer', $customer);
     }
 
     /**
