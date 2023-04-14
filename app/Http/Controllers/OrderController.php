@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -23,17 +25,17 @@ class OrderController extends Controller
                 $query->where('name', 'LIKE', "%{$searchTerm}%")
                     ->orWhere('address', 'LIKE', "%{$searchTerm}%")
                     ->orWhere('phone', 'LIKE', "%{$searchTerm}%");
-            })->get();
+            })->simplePaginate(20);
             $condition = 'search';
         } elseif ($request->query('tab')) {
             if ($request->query('tab') == 'done') {
-                $orders = Order::where('status', $request->query('tab'))->latest()->take(10)->get();
+                $orders = Order::where('status', $request->query('tab'))->latest()->simplePaginate(20);
             } else {
-                $orders = Order::where('status', $request->query('tab'))->get();
+                $orders = Order::where('status', $request->query('tab'))->simplePaginate(20);
             }
             $condition = $request->query('tab');
         } else {
-            $orders = Order::with('orderDetail')->latest()->take(10)->get();
+            $orders = Order::with('orderDetail')->latest()->simplePaginate(20);
             $condition = "";
         }
 
@@ -43,9 +45,11 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('order.create');
+        $products = Product::all()->toJson();
+        dd($products);
+        return view('order.create')->with('products', $products);
     }
 
     /**

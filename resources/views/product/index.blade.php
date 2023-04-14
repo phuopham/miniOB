@@ -2,7 +2,15 @@
 
 @section('content')
     <p>{{ $notification['message'] ?? '' }}</p>
-    <h2>Products</h2>
+    <div class="d-flex justify-content-between">
+        <h2>Products</h2>
+        <form action="{{ route('products.index') }}">
+            <a class="btn btn-warning" href="{{ route('products.index') }}">Clear</a>
+            <input class="form-control d-inline" type="text" name="search" id="">
+            <button class="btn btn-warning" type='submit'>Search</button>
+        </form>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -27,6 +35,7 @@
             @endforeach
         </tbody>
     </table>
+    {{ $products->links() }}
     <h3>Add new product</h3>
     <form class="d-flex row" action="{{ route('products.store') }}" method="post">
         @csrf

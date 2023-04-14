@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item {{ request()->is('/') ? 'active' : '' }}">
-                    <a class="nav-link " href="">Home</a>
+                    <a class="nav-link " href="{{ route('index.index') }}">Home</a>
                 </li>
 
                 <li class="nav-item {{ request()->is('customers') || request()->is('customers/*') ? 'active' : '' }}">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
@@ -17,12 +18,13 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [IndexController::class, 'index'])->name('index.index');
+Route::resource('/orders', OrderController::class);
+Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
 // Route::resource('/orderdetail', OrderDetailController::class);
-Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
-Route::resource('/orders', OrderController::class);

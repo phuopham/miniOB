@@ -3,7 +3,7 @@
 @section('content')
     <h2>Orders</h2>
 
-    <div class="d-md-flex justify-content-between">
+    <div class="d-md-flex justify-content-between align-items-start">
         <ul class="nav nav-tabs flex-fill">
             <li class="nav-item">
                 <a class="nav-link {{ $condition == 'created' ? 'active' : '' }}"
@@ -26,10 +26,8 @@
                     href="{{ route('orders.index', ['tab' => 'done']) }}">10 latest done</a>
             </li>
         </ul>
-        <div>
-            <a class="btn btn-warning" href="{{ route('orders.index') }}">Clear</a>
-        </div>
         <form action="{{ route('orders.index') }}">
+            <a class="btn btn-warning" href="{{ route('orders.index') }}">Clear</a>
             <input class="form-control d-inline" type="text" name="search" id="">
             <button class="btn btn-warning" type='submit'>Search</button>
         </form>
@@ -114,5 +112,6 @@
                 <button class="btn btn-primary">Print</button>
             </div>
         @endforeach
+        {{ $orders->links() }}
     </div>
 @endsection

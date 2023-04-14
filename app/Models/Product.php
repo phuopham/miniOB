@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function orderDetail(): HasMany
     {
         return $this->hasMany(OrderDetail::class);

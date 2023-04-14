@@ -2,7 +2,15 @@
 
 @section('content')
     <p>{{ $notification['message'] ?? '' }}</p>
-    <h2>Customers</h2>
+    <div class="d-flex justify-content-between">
+        <h2>Customers</h2>
+        <form action="{{ route('customers.index') }}">
+            <a class="btn btn-warning" href="{{ route('customers.index') }}">Clear</a>
+            <input class="form-control d-inline" type="text" name="search" id="">
+            <button class="btn btn-warning" type='submit'>Search</button>
+        </form>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -22,13 +30,17 @@
                     <td>{{ $customer->address }}</td>
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->note }}</td>
-                    <td><a class="btn btn-primary" href="{{ route('customers.show', $customer['id']) }}">View</a>
-                        <a class="btn btn-warning" href="{{ route('customers.edit', $customer['id']) }}">Edit</a>
+                    <td>
+                        <a class="btn btn-danger" href="{{ route('orders.create', ['customer' => $customer->id]) }}">Create
+                            order</a>
+                        <a class="btn btn-primary" href="{{ route('customers.show', $customer->id) }}">View</a>
+                        <a class="btn btn-warning" href="{{ route('customers.edit', $customer->id) }}">Edit</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    {{ $customers->links() }}
     <h3>Add new customer</h3>
     <form class="d-flex row" action="{{ route('customers.store') }}" method="post">
         @csrf
