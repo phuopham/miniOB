@@ -24,7 +24,7 @@ class CustomerController extends Controller
                 ->simplePaginate(20);
             $condition = 'search';
         } else {
-            $customers = Customer::latest()->simplePaginate(5);
+            $customers = Customer::latest()->simplePaginate(20);
             $condition = '';
         }
         return view('customer.index')->with('customers', $customers)->with('condition', $condition);

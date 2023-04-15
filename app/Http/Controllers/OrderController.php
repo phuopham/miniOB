@@ -47,9 +47,9 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        $products = Product::all()->toJson();
-        dd($products);
-        return view('order.create')->with('products', $products);
+        $customer = Customer::find($request->query('customer'));
+
+        return view('order.create')->with('customer', $customer);
     }
 
     /**

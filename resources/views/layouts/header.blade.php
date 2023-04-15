@@ -23,7 +23,10 @@
                     <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                 </li>
                 <li class="nav-item {{ request()->is('orders') || request()->is('orders/*') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('orders.index') }}">Orders</a>
+                    <a class="nav-link" href="{{ route('orders.index') }}">Orders history</a>
+                </li>
+                <li class="nav-item {{ request()->is('cart') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('cart.index') }}">Cart</a>
                 </li>
             </ul>
         </div>

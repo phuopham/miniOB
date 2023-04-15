@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
@@ -28,3 +28,12 @@ Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->na
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
 // Route::resource('/orderdetail', OrderDetailController::class);
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::post('/addcustomer', [CartController::class, 'addCustomer'])->name('cart.addCustomer');
+Route::post('/addproducts', [CartController::class, 'addProducts'])->name('cart.addProducts');
+Route::post('/reducequantity', [CartController::class, 'reduceQuantity'])->name('cart.reduceQuantity');
+Route::post('/removeproduct', [CartController::class, 'removeProduct'])->name('cart.removeProduct');
+Route::post('/addship', [CartController::class, 'addShip'])->name('cart.addShip');
+Route::get('/cancelCart', [CartController::class, 'cancelCart'])->name('cart.cancel');

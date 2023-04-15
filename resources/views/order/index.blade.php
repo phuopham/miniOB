@@ -39,20 +39,20 @@
             <div class="col-lg-6">
                 <div class="d-flex row p-3 rounded-xl">
 
-                    <p class="col-md-6"><span>ID:</span>
-                        <span>{{ $order->id }}</span>
-                    </p>
                     <p class="col-md-6"><span>Name:</span>
                         <span>{{ $order->customer->name }}</span>
+                    </p>
+                    <p class="col-md-6"><span>ID:</span>
+                        <span>{{ $order->id }}</span>
                     </p>
                     <p class="col-md-6"><span>Address:</span>
                         <span>{{ $order->customer->address }}</span>
                     </p>
-                    <p class="col-md-6"><span>Phone:</span>
-                        <span>{{ $order->customer->phone }}</span>
-                    </p>
                     <p class="col-md-6"><span> Note:</span>
                         <span>{{ $order->customer->note }}</span>
+                    </p>
+                    <p class="col-md-6"><span>Phone:</span>
+                        <span>{{ $order->customer->phone }}</span>
                     </p>
                     <div class="col-md-6 d-flex">
                         <p>Status:</p>

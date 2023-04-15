@@ -150,8 +150,7 @@ h6 {
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 1rem
+    margin: 0;
 }
 
 abbr[data-bs-original-title],
@@ -377,12 +376,12 @@ select:disabled {
     display: none
 }
 
-[type=button],
+/* [type=button],
 [type=reset],
 [type=submit],
 button {
     -webkit-appearance: button
-}
+} */
 
 [type=button]:not(:disabled),
 [type=reset]:not(:disabled),
@@ -442,7 +441,7 @@ legend+* {
 
 [type=search] {
     outline-offset: -2px;
-    -webkit-appearance: textfield
+    /* -webkit-appearance: textfield */
 }
 
 ::-webkit-search-decoration {
@@ -2515,8 +2514,8 @@ textarea.form-control-lg {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact
+    /* -webkit-print-color-adjust: exact; */
+    /* color-adjust: exact */
 }
 
 .form-check-input[type=checkbox] {
@@ -8284,6 +8283,10 @@ fieldset:disabled .btn {
 
 .bg-white {
     background-color: #fff !important
+}
+
+.bg-teal {
+    background-color: var(--bs-teal)
 }
 
 .bg-transparent {

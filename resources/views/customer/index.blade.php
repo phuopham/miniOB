@@ -31,8 +31,12 @@
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->note }}</td>
                     <td>
-                        <a class="btn btn-danger" href="{{ route('orders.create', ['customer' => $customer->id]) }}">Create
-                            order</a>
+                        <form class="d-inline" action="{{ route('cart.addCustomer') }}" method="post">
+                            @csrf
+                            <input type="text" name="customer" hidden value='{{ $customer }}'>
+                            <button class="btn btn-danger">Create
+                                order</button>
+                        </form>
                         <a class="btn btn-primary" href="{{ route('customers.show', $customer->id) }}">View</a>
                         <a class="btn btn-warning" href="{{ route('customers.edit', $customer->id) }}">Edit</a>
                     </td>
@@ -56,3 +60,20 @@
         <input class="btn btn-primary" type="submit" value="Add" />
     </form>
 @endsection
+
+{{-- @section('javascript')
+    <script>
+        function addCustomer(customer) {
+            let cusInStore = JSON.parse(localStorage.getItem('customer'));
+            if (cusInStore != null) {
+                let result = confirm('Are you sure you want change the customer?');
+                if (result) {
+                    localStorage.setItem('customer', JSON.stringify(customer));
+                }
+            } else {
+                localStorage.setItem('customer', JSON.stringify(customer));
+            }
+            location.reload();
+        }
+    </script>
+@endsection --}}

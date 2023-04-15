@@ -25,7 +25,7 @@
 
     <!-- <link href="css/aos.css" rel="stylesheet"> -->
 
-    <link href="{{ URL('css/templatemo-nomad-force.css') }}" rel="stylesheet">
+    <link href="{{ URL('/css/templatemo-nomad-force.css') }}" rel="stylesheet">
 
 </head>
 
@@ -34,15 +34,14 @@
         @include('layouts.header')
     </header>
     <main class="container">
-
         @yield('content')
 
     </main>
-    {{-- <footer>
+    <footer>
         @include('layouts.footer')
-    </footer> --}}
-
+    </footer>
     <script src="{{ URL('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL('/js/app.js') }}"></script>
     @yield('javascript')
 </body>
 

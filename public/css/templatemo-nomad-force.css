@@ -100,12 +100,12 @@ h6 {
     font-size: var(--h6-font-size);
 }
 
-p {
+/* p {
     color: var(--p-color);
     font-size: var(--p-font-size);
     font-weight: var(--font-weight-light);
     letter-spacing: 0.5px;
-}
+} */
 
 .text-secondary-white-color {
     color: var(--text-secondary-white-color);
