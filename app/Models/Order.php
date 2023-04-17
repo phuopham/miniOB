@@ -15,6 +15,7 @@ class Order extends Model
         'customer_id',
         'type',
         'note',
+        'ship_price',
         'status'
     ];
 

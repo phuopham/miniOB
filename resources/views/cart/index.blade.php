@@ -63,6 +63,7 @@
                     @endforeach
                 </tbody>
                 <form action="{{ route('orders.store') }}" method="post">
+                    @csrf
                     <tfoot>
                         <tr>
                             <td></td>
@@ -86,8 +87,22 @@
             </table>
         </div>
     </div>
+    <a class="btn btn-secondary" onclick="return confirm('Are you sure you want to delete current cart?')"
+        href="{{ route('cart.cancel') }}">Cancel</a>
 
+    <input type="text" name="customer" hidden value='{{ json_encode($customer) }}' id="">
+    <input type="text" name="products" hidden value=' {{ json_encode($products) }}'>
     <button id="submit-order" {{ $customer == null || $total == null ? 'disabled' : '' }} type="submit"
         class="btn btn-danger">Submit order</button>
     </form>
+@endsection
+
+@section('javascript')
+    <script>
+        let shipFee = document.querySelector('#ship-fee');
+        let total = document.querySelector('#total');
+        shipFee.addEventListener('input', function() {
+            total.innerHTML = ({{ $total }} + Number(shipFee.value));
+        });
+    </script>
 @endsection

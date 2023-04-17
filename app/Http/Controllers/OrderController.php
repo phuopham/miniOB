@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -57,7 +58,22 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(json_decode($request->input('customer'))->id);
+        $order = new Order;
+        $order->customer_id = json_decode($request->input('customer'))->id;
+        $order->ship_price = $request->input('ship');
+        $order->save();
+        $products = json_decode($request->input('products'));
+        foreach ($products as &$product) {
+            $orderDetail = new OrderDetail;
+            $orderDetail->order_id = $order->id;
+            $orderDetail->product_id = $product->id;
+            $orderDetail->quantity = $product->quantity;
+            $orderDetail->price = $product->price;
+            $orderDetail->save();
+        }
+
+        return redirect()->route('cart.cancel');
     }
 
     /**

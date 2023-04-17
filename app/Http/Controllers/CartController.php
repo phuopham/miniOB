@@ -92,7 +92,7 @@ class CartController extends Controller
         $cart->ship = 0;
         $cart->products = [];
         $cart->save();
-        return redirect()->back();
+        return redirect()->route('cart.index');
     }
 
     public function index()
