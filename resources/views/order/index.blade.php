@@ -23,12 +23,12 @@
             <li class="nav-item">
                 <a class="nav-link {{ $condition == 'done' ? 'active' : '' }}"
                     {{ $condition == 'done' ? 'aria-current="page"' : '' }}
-                    href="{{ route('orders.index', ['tab' => 'done']) }}">10 latest done</a>
+                    href="{{ route('orders.index', ['tab' => 'done']) }}">Done</a>
             </li>
         </ul>
         <form action="{{ route('orders.index') }}">
             <a class="btn btn-warning" href="{{ route('orders.index') }}">Clear</a>
-            <input class="form-control d-inline" type="text" name="search" id="">
+            <input class="form-control d-inline" type="text" style="width:200px;" name="search" id="">
             <button class="btn btn-warning" type='submit'>Search</button>
         </form>
 

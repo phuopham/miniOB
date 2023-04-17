@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="p-3">
+    <div>
         <h2>Cart</h2>
         <div id="customer">
             @if ($customer != null)
@@ -23,10 +23,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <td>id</td>
+                        <td class="d-none d-sm-table-cell">id</td>
                         <td>Product</td>
                         <td>Quantity</td>
-                        <td>Price</td>
+                        <td class="d-none d-sm-table-cell">Price</td>
                         <td>Total price</td>
                         <td></td>
                     </tr>
@@ -34,7 +34,7 @@
                 <tbody id="cart">
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->id }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
                             <td>
                                 <form class="d-inline" action="{{ route('cart.reduceQuantity') }}" method="post">
@@ -49,7 +49,7 @@
                                     <button class="btn btn-danger">+</button>
                                 </form>
                             </td>
-                            <td>{{ $product->price }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $product->price }}</td>
                             <td>{{ $product->quantity * $product->price }}</td>
                             <td>
                                 <form class="d-inline" action="{{ route('cart.removeProduct') }}" method="post">
@@ -66,20 +66,20 @@
                     @csrf
                     <tfoot>
                         <tr>
-                            <td></td>
+                            <td class="d-none d-sm-table-cell"></td>
                             <td>Ship fee</td>
                             <td></td>
-                            <td></td>
-                            <td><input style="width:100px;" type="number" name="ship" id="ship-fee"
+                            <td class="d-none d-sm-table-cell"></td>
+                            <td><input style="width:80px;" type="number" name="ship" id="ship-fee"
                                     value="{{ $ship }}">
                             </td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td class="d-none d-sm-table-cell"></td>
                             <td>Total</td>
                             <td></td>
-                            <td></td>
+                            <td class="d-none d-sm-table-cell"></td>
                             <td id="total">{{ $total }}</td>
                             <td></td>
                         </tr>

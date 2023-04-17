@@ -20,7 +20,7 @@
             </div>
         </div>
         @if ($cart->customer != '' && !$cart->product != [])
-            <div class=" col-6 col-md-3 bg-teal shadow-lg rounded rounded-3 "
+            <div class=" col-12 col-md-6 col-xl-4 bg-teal shadow-lg rounded rounded-3 "
                 {{ request()->is('cart') ? 'hidden' : '' }}>
                 {{-- {{ json_encode($cart) }} --}}
                 <div class="d-flex align-items-center justify-content-between">

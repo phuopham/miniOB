@@ -2,11 +2,11 @@
 
 @section('content')
     <p>{{ $notification['message'] ?? '' }}</p>
-    <div class="d-flex justify-content-between">
+    <div class="d-dm-flex justify-content-between">
         <h2>Customers</h2>
         <form action="{{ route('customers.index') }}">
             <a class="btn btn-warning" href="{{ route('customers.index') }}">Clear</a>
-            <input class="form-control d-inline" type="text" name="search" id="">
+            <input class="form-control d-inline" style="width:200px;" type="text" name="search" id="">
             <button class="btn btn-warning" type='submit'>Search</button>
         </form>
     </div>
@@ -14,22 +14,22 @@
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th class="d-none d-sm-table-cell">ID</th>
                 <th>Name</th>
-                <th>Address</th>
-                <th>Tel</th>
-                <th>Note</th>
+                <th class="d-none d-md-table-cell">Address</th>
+                <th class="d-none d-md-table-cell">Tel</th>
+                <th class="d-none d-md-table-cell">Note</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
-                    <td>{{ $customer->id }}</td>
+                    <td class="d-none d-sm-table-cell">{{ $customer->id }}</td>
                     <td>{{ $customer->name }}</td>
-                    <td>{{ $customer->address }}</td>
-                    <td>{{ $customer->phone }}</td>
-                    <td>{{ $customer->note }}</td>
+                    <td class="d-none d-md-table-cell">{{ $customer->address }}</td>
+                    <td class="d-none d-md-table-cell">{{ $customer->phone }}</td>
+                    <td class="d-none d-md-table-cell">{{ $customer->note }}</td>
                     <td>
                         <form class="d-inline" action="{{ route('cart.addCustomer') }}" method="post">
                             @csrf
