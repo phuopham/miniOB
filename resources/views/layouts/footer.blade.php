@@ -6,9 +6,8 @@
         <div class=" d-none d-md-block col-5 bg-teal shadow-lg rounded rounded-3 ">
 
             <marquee behavior="alternate">
-                ********************To connect from mobile phone, please type following line to any webbrowser
-                "http://{{ gethostbyname(gethostname()) }}/". Make sure you are in the same network as this
-                device.***************************
+                Truy cập vào link: "http://{{ gethostbyname(gethostname()) }}/" bằng trình duyệt để truy cập vào app
+                trên điện thoại. Yêu cầu máy tính bật và điện thoại kết nối không dây vào chung mạng với mạng máy tính!
             </marquee>
             <div class="d-flex justify-content-between">
                 <div>
@@ -26,13 +25,13 @@
             <div class="d-flex align-items-center justify-content-between">
                 <h4>Cart</h4>
                 <a class="btn btn-secondary" onclick="return confirm('Are you sure you want to delete current cart?')"
-                    href="{{ route('cart.cancel') }}">Cancel</a>
-                <a href="{{ route('cart.index') }}"><u>Go to cart -&gt;</u></a>
+                    href="{{ route('cart.cancel') }}">Hủy đơn</a>
+                <a href="{{ route('cart.index') }}"><u>Tới đơn hàng -&gt;</u></a>
             </div>
             @if ($cart->customer != '')
-            <div>Customer: {{ json_decode($cart->customer)->name }}</div>
+            <div>Tên khách: {{ json_decode($cart->customer)->name }}</div>
             @endif
-            <div>Products</div>
+            <div>Sản phẩm</div>
             @if ($cart->products != [])
             <ul>
                 @foreach (json_decode($cart->products) as $product)
@@ -41,7 +40,7 @@
                         @csrf
                         <input type="text" name="product" hidden value='{{ json_encode($product) }}'>
 
-                        <button class="btn btn-danger" type="submit">Remove</button>
+                        <button class="btn btn-danger" type="submit">Xóa</button>
                     </form>
                     {{ $product->name }} - {{ $product->quantity }}
                     <form class="d-inline" action="{{ route('cart.reduceQuantity') }}" method="post">

@@ -12,9 +12,9 @@ $totalValue += $item->total;
 @section('content')
 <h2>Welcome to Mini Online Business!</h2>
 <p>
-    Tháng này chúng ta đã bán được {{ count($data) }} đơn. Tổng giá trị các đơn hàng là {{ $totalValue }} chưa bao gồm
-    {{
-    $totalShip }} phí vận chuyển.
+    Tháng này chúng ta đã bán được <u>{{ count($data) }}</u> đơn. Tổng giá trị các đơn hàng là <u>{{ $totalValue }}</u>
+    chưa bao gồm
+    <u>{{ $totalShip }}</u> phí vận chuyển.
 </p>
 <p>
     Keep fighting!

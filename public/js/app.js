@@ -20,7 +20,7 @@
 // let htmlCustomer = '';
 // if (customer != null) {
 //     customer = JSON.parse(customer);
-//     htmlCustomer += `<p>Customer: <span>${customer.name}</span></p><p>Address: <span>${customer.address}</span></p><p>Phone: <span>${customer.phone}</span></p>`;
+//     htmlCustomer += `<p>Tên khách: <span>${customer.name}</span></p><p>Địa chỉ: <span>${customer.address}</span></p><p>SĐT: <span>${customer.phone}</span></p>`;
 //     cusDiv.innerHTML = htmlCustomer;
 // }
 
