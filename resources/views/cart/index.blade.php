@@ -56,7 +56,7 @@
                                     @csrf
                                     <input type="text" name="product" hidden value='{{ json_encode($product) }}'>
 
-                                    <button type="submit">Remove</button>
+                                    <button class="btn btn-danger" type="submit">Remove</button>
                                 </form>
                             </td>
                         </tr>
