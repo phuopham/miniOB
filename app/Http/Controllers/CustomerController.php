@@ -50,12 +50,7 @@ class CustomerController extends Controller
         $customer->note = $request->note;
         $customer->save();
 
-        $notification = array(
-            'message' => 'Customer added successfully!',
-            'alert_type' => 'success'
-        );
-
-        return redirect()->route('customers.index')->with('notification', $notification);
+        return redirect()->route('customers.index');
 
     }
 
@@ -93,12 +88,7 @@ class CustomerController extends Controller
         $customer->note = $request->note;
         $customer->save();
 
-        $notification = array(
-            'message' => 'Customer edited successfully!',
-            'alert_type' => 'success'
-        );
-
-        return redirect()->route('customers.show', $id)->with('notification', $notification);
+        return redirect()->route('customers.show', $id);
     }
 
     /**

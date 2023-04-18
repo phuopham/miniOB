@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<p>{{ $notification['message'] ?? '' }}</p>
 <div class="d-md-flex justify-content-between">
     <h2>Danh sách sản phẩm</h2>
     <form action="{{ route('products.index') }}">

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<p>{{ $notification['message'] ?? '' }}</p>
 <h2>Create Order</h2>
 /////////////////////////////////////////
 <form class="d-flex row" action="{{ route('orders.store') }}" method="post">

@@ -116,12 +116,7 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        $notification = array(
-            'message' => 'Order updated successfully!',
-            'alert_type' => 'success'
-        );
-
-        return redirect()->route('orders.index')->with('notification', $notification);
+        return redirect()->route('orders.index');
     }
 
 }

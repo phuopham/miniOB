@@ -48,12 +48,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        $notification = array(
-            'message' => 'Customer added successfully!',
-            'alert_type' => 'success'
-        );
-
-        return redirect()->route('products.index')->with('notification', $notification);
+        return redirect()->route('products.index');
 
     }
 
@@ -89,12 +84,8 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->save();
-        $notification = array(
-            'message' => 'Product edited successfully!',
-            'alert_type' => 'success'
-        );
 
-        return redirect()->route('products.show', $id)->with('notification', $notification);
+        return redirect()->route('products.show', $id);
     }
 
     /**
