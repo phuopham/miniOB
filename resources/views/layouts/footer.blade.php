@@ -18,7 +18,6 @@
                 </div>
             </div>
         </div>
-        {{-- {{ json_encode($cart) }} --}}
         @if ($cart->customer != '' || $cart->products != '[]')
             <div class=" col-12 col-md-6 col-xl-4 bg-teal shadow-lg rounded rounded-3 "
                 {{ request()->is('cart') ? 'hidden' : '' }}>

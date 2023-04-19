@@ -53,26 +53,3 @@
     <input class="btn btn-primary" type="submit" value="Tạo sản phẩm" />
 </form>
 @endsection
-
-{{-- @section('javascript')
-<script>
-    function addItem(product) {
-            product.quantity = 1
-            console.log(product)
-            let cart = JSON.parse(localStorage.getItem('products'));
-            console.log(cart)
-            if (cart != null) {
-                var foundIndex = cart.findIndex(item => item.id === product.id);
-                if (foundIndex !== -1) {
-                    cart[foundIndex].quantity += product.quantity;
-                } else {
-                    cart.push(product);
-                }
-                localStorage.setItem('products', JSON.stringify(cart));
-            } else {
-                localStorage.setItem('products', JSON.stringify([product]));
-            }
-            location.reload();
-        }
-</script>
-@endsection --}}

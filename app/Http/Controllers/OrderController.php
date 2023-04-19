@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderDetail;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -18,10 +17,6 @@ class OrderController extends Controller
 
         if ($request->query('search')) {
             $searchTerm = $request->query('search');
-            // $ordersByName = Order::where('', 'LIKE', "%{$searchTerm}%")
-            //     ->orWhere('customer_email', 'LIKE', "%{$searchTerm}%")
-            //     ->get();
-
             $orders = Order::whereHas('customer', function ($query) use ($searchTerm) {
                 $query->where('name', 'LIKE', "%{$searchTerm}%")
                     ->orWhere('address', 'LIKE', "%{$searchTerm}%")

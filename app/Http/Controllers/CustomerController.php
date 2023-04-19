@@ -6,7 +6,6 @@ use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
 
 class CustomerController extends Controller
 {

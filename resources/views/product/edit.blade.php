@@ -2,7 +2,6 @@
 @section('content')
 <div class="m-4">
     <a href="{{ route('products.index') }}">&lt;- <u>Quay về</u></a>
-    {{-- <a href="{{ route('products.index') }}">Edit -&gt;</a> --}}
 </div>
 <h2>Sửa sản phẩm</h2>
 <form class="d-flex row" action="{{ route('products.update', $product->id) }}" method="post">

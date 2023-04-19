@@ -22,7 +22,6 @@ class CartController extends Controller
         $newProduct->quantity = 1;
 
         $products = collect(json_decode($cart->products));
-        // dd($products);
         $itemInList = false;
 
         foreach ($products as &$product) {

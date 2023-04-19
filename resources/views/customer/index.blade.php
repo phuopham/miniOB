@@ -59,20 +59,3 @@
     <input class="btn btn-primary" type="submit" value="Thêm khách" />
 </form>
 @endsection
-
-{{-- @section('javascript')
-<script>
-    function addCustomer(customer) {
-            let cusInStore = JSON.parse(localStorage.getItem('customer'));
-            if (cusInStore != null) {
-                let result = confirm('Are you sure you want change the customer?');
-                if (result) {
-                    localStorage.setItem('customer', JSON.stringify(customer));
-                }
-            } else {
-                localStorage.setItem('customer', JSON.stringify(customer));
-            }
-            location.reload();
-        }
-</script>
-@endsection --}}

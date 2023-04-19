@@ -19,13 +19,6 @@
         rel="stylesheet">
 
     <link href="{{ URL('/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{--
-    <link href="{{ URL('css/bootstrap-icons.css') }}" rel="stylesheet"> --}}
-
-    {{--
-    <link rel="stylesheet" href="css/magnific-popup.css"> --}}
-
-    <!-- <link href="css/aos.css" rel="stylesheet"> -->
 
     <link href="{{ URL('/css/templatemo-nomad-force.css') }}" rel="stylesheet">
 
