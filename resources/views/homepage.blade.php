@@ -16,28 +16,32 @@
         <u>{{ $totalValue }}</u>
         chưa bao gồm <u>{{ $totalShip }}</u> phí vận chuyển.
     </p>
+    <br>
     <p>
         Chúng ta còn cần phải xử lý <u>{{ count($uncompletedOrder) }}</u> đơn. Chi tiết như sau:
     </p>
-    @foreach ($uncompletedOrder as $order)
-        @if ($order->status == 'delivered')
-            <p>Khách hàng {{ $order->customer->name }} vẫn chưa thanh toán đơn {{ $order->id }} với trị giá
-                {{ $order->total }} </p>
-        @endif
-        @if ($order->status == 'paid')
-            <p>Đơn {{ $order->id }} cần được giao cho khách hàng {{ $order->customer->name }} ở địa chỉ
-                {{ $order->customer->address }}</p>
-        @endif
-        @if ($order->status == 'created')
-            <p>Đơn {{ $order->id }} đã được lên đơn từ ngày
-                {{ Carbon\Carbon::parse($order->created_at)->toDateString() }}.
-                Cần sớm được xử
-                lý!
-            </p>
-        @endif
-    @endforeach
+    <br>
+    <ul>
+        @foreach ($uncompletedOrder as $order)
+            @if ($order->status == 'delivered')
+                <li>Khách hàng {{ $order->customer->name }} vẫn chưa thanh toán đơn {{ $order->id }} với trị giá
+                    {{ $order->total }} </li>
+            @endif
+            @if ($order->status == 'paid')
+                <li>Đơn {{ $order->id }} cần được giao cho khách hàng {{ $order->customer->name }} ở địa chỉ
+                    {{ $order->customer->address }}</li>
+            @endif
+            @if ($order->status == 'created')
+                <li>Đơn {{ $order->id }} cho khách hàng {{ $order->customer->name }} đã được lên đơn từ ngày
+                    {{ Carbon\Carbon::parse($order->created_at)->toDateString() }}.
+                    Cần sớm được xử lý!
+                </li>
+            @endif
+        @endforeach
+
+    </ul>
     <p>
-        Chi tiết vui lòng vào phần <a href="{{ route('orders.index') }}">Đơn đã lên</a> để biết thêm chi tiết.
+        Vào phần <a href="{{ route('orders.index') }}">Đơn đã lên</a> để biết thêm chi tiết.
     </p>
     <p>
         Keep fighting!
