@@ -25,6 +25,7 @@ class IndexController extends Controller
             $data->total = $total;
             array_push($output, $data);
         }
-        return view('homepage')->with('data', $output);
+        $uncompletedOrder = Order::where('status', '!=', 'done')->get();
+        return view('homepage')->with('data', $output)->with('uncompletedOrder', $uncompletedOrder);
     }
 }

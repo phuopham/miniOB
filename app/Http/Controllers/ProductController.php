@@ -48,7 +48,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Sản phẩm ' . $request->name . ' đã được tạo thành công!');
 
     }
 
@@ -85,7 +85,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        return redirect()->route('products.show', $id);
+        return redirect()->route('products.show', $id)->with('success', 'Sản phẩm ' . $request->name . ' đã được cập nhật!');
     }
 
     /**

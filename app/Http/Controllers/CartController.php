@@ -12,7 +12,7 @@ class CartController extends Controller
         $cart = cart::find(1);
         $cart->customer = $request->input('customer');
         $cart->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Khách đã được thêm vào đơn!');
     }
 
     public function addProducts(Request $request)
@@ -36,7 +36,7 @@ class CartController extends Controller
         }
         $cart->products = $products;
         $cart->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', $newProduct->name . ' đã được thêm vào đơn!');
     }
 
     public function reduceQuantity(Request $request)
@@ -59,7 +59,7 @@ class CartController extends Controller
         }
         $cart->products = $products;
         $cart->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', $reduceProduct->name . ' đã được bớt đi!');
     }
 
     public function removeProduct(Request $request)
@@ -74,7 +74,7 @@ class CartController extends Controller
 
         $cart->products = $products;
         $cart->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', $removeProduct->name . ' đã được xóa khỏi đơn!');
     }
 
     public function addShip(Request $request)
@@ -82,7 +82,7 @@ class CartController extends Controller
         $cart = cart::find(1);
         $cart->ship = $request->input('ship');
         $cart->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Tiền ship đã được thay đổi thành công!');
     }
 
     public function cancelCart()
@@ -92,7 +92,9 @@ class CartController extends Controller
         $cart->ship = 0;
         $cart->products = [];
         $cart->save();
-        return redirect()->route('cart.index');
+        if (session('success'))
+            return redirect()->route('cart.index')->with('success', session('success'));
+        return redirect()->route('cart.index')->with('success', 'Đơn đã được hủy!');
     }
 
     public function index()
@@ -104,6 +106,7 @@ class CartController extends Controller
         foreach ($products as &$product) {
             $total += $product->price * $product->quantity;
         }
+
         return view('cart.index')
             ->with('ship', $cart->ship)
             ->with('customer', $customer)

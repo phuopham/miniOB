@@ -58,12 +58,12 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(json_decode($request->input('customer'))->id);
         $order = new Order;
         $order->customer_id = json_decode($request->input('customer'))->id;
         $order->ship_price = $request->input('ship');
         $order->save();
         $products = json_decode($request->input('products'));
+        $total = 0;
         foreach ($products as &$product) {
             $orderDetail = new OrderDetail;
             $orderDetail->order_id = $order->id;
@@ -71,9 +71,11 @@ class OrderController extends Controller
             $orderDetail->quantity = $product->quantity;
             $orderDetail->price = $product->price;
             $orderDetail->save();
+            $total += $product->quantity * $product->price;
         }
-
-        return redirect()->route('cart.cancel');
+        $order->total = $total;
+        $order->save();
+        return redirect()->route('cart.cancel')->with('success', 'Thêm đơn hàng số: ' . $order->id . ' thành công!');
     }
 
     /**
@@ -116,7 +118,7 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        return redirect()->route('orders.index');
+        return redirect()->route('orders.index')->with('success', 'Đơn hàng: ' . $id . ' đã được thay đổi trạng thái thành ' . $request->status . ' !');
     }
 
 }

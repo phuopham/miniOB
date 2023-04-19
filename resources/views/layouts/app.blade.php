@@ -19,9 +19,11 @@
         rel="stylesheet">
 
     <link href="{{ URL('/css/bootstrap.min.css') }}" rel="stylesheet">
-    {{-- <link href="{{ URL('css/bootstrap-icons.css') }}" rel="stylesheet"> --}}
+    {{--
+    <link href="{{ URL('css/bootstrap-icons.css') }}" rel="stylesheet"> --}}
 
-    {{-- <link rel="stylesheet" href="css/magnific-popup.css"> --}}
+    {{--
+    <link rel="stylesheet" href="css/magnific-popup.css"> --}}
 
     <!-- <link href="css/aos.css" rel="stylesheet"> -->
 
@@ -35,13 +37,16 @@
     </header>
     <main class="container">
         @yield('content')
-
     </main>
     <footer>
         @include('layouts.footer')
     </footer>
+
+    @include('sweetalert::alert')
+
     <script src="{{ URL('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ URL('/js/app.js') }}"></script>
+
     @yield('javascript')
 </body>
 

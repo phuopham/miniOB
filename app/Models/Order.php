@@ -16,7 +16,8 @@ class Order extends Model
         'type',
         'note',
         'ship_price',
-        'status'
+        'status',
+        'total'
     ];
 
     public function orderDetail(): HasMany

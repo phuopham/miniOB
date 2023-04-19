@@ -27,7 +27,7 @@ class CustomerController extends Controller
             $customers = Customer::latest()->simplePaginate(20);
             $condition = '';
         }
-        return view('customer.index')->with('customers', $customers)->with('condition', $condition);
+        return view('customer.index')->with('customers', $customers)->with('condition', $condition)->with('success', 'abc');
     }
 
     /**
@@ -50,7 +50,7 @@ class CustomerController extends Controller
         $customer->note = $request->note;
         $customer->save();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Thêm khách hàng ' . $customer->name . ' thành công!');
 
     }
 
@@ -88,7 +88,7 @@ class CustomerController extends Controller
         $customer->note = $request->note;
         $customer->save();
 
-        return redirect()->route('customers.show', $id);
+        return redirect()->route('customers.show', $id)->with('success', 'Thay đổi thông tin khách hàng ' . $customer->name . ' thành công!');
     }
 
     /**
