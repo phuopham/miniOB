@@ -14,7 +14,8 @@ class Customer extends Model
         'name',
         'address',
         'phone',
-        'note'
+        'note',
+        'type'
     ];
 
     protected $guarded = array('id');

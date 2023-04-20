@@ -17,7 +17,7 @@ class OrderController extends Controller
 
         if ($request->query('search')) {
             $searchTerm = $request->query('search');
-            $orders = Order::whereHas('customer', function ($query) use ($searchTerm) {
+            $orders = Order::where('type', 'sell')->whereHas('customer', function ($query) use ($searchTerm) {
                 $query->where('name', 'LIKE', "%{$searchTerm}%")
                     ->orWhere('address', 'LIKE', "%{$searchTerm}%")
                     ->orWhere('phone', 'LIKE', "%{$searchTerm}%");
@@ -25,13 +25,13 @@ class OrderController extends Controller
             $condition = 'search';
         } elseif ($request->query('tab')) {
             if ($request->query('tab') == 'done') {
-                $orders = Order::where('status', $request->query('tab'))->latest()->simplePaginate(20);
+                $orders = Order::where('type', 'sell')->where('status', $request->query('tab'))->latest()->simplePaginate(20);
             } else {
-                $orders = Order::where('status', $request->query('tab'))->simplePaginate(20);
+                $orders = Order::where('type', 'sell')->where('status', $request->query('tab'))->simplePaginate(20);
             }
             $condition = $request->query('tab');
         } else {
-            $orders = Order::with('orderDetail')->latest()->simplePaginate(20);
+            $orders = Order::where('type', 'sell')->with('orderDetail')->latest()->simplePaginate(20);
             $condition = "";
         }
 
@@ -113,7 +113,7 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        return redirect()->route('orders.index')->with('success', 'Đơn hàng: ' . $id . ' đã được thay đổi trạng thái thành ' . $request->status . ' !');
+        return redirect()->back()->with('success', 'Đơn hàng: ' . $id . ' đã được thay đổi trạng thái thành ' . $request->status . ' !');
     }
 
 }

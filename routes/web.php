@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 
@@ -27,6 +28,8 @@ Route::resource('/orders', OrderController::class);
 Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
+Route::resource('/purchases', PurchaseController::class);
+
 // Route::resource('/orderdetail', OrderDetailController::class);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

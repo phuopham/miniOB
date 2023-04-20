@@ -22,11 +22,29 @@
                 <li class="nav-item {{ request()->is('products') || request()->is('products/*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('products.index') }}">Sản phẩm</a>
                 </li>
-                <li class="nav-item {{ request()->is('orders') || request()->is('orders/*') ? 'active' : '' }}">
+                {{-- <li class="nav-item {{ request()->is('orders') || request()->is('orders/*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('orders.index') }}">Đơn đã tạo</a>
                 </li>
                 <li class="nav-item {{ request()->is('cart') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('cart.index') }}">Đơn đang lên</a>
+                </li> --}}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Đơn hàng
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-link {{ request()->is('cart') ? 'active' : '' }}"
+                                href="{{ route('cart.index') }}">Đơn đang lên</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="nav-link {{ request()->is('orders') || request()->is('orders/*') ? 'active' : '' }}"
+                                href="{{ route('orders.index') }}">Đơn bán</a></li>
+                        <li><a class="nav-link {{ request()->is('purchases') || request()->is('purchases/*') ? 'active' : '' }}"
+                                href="{{ route('purchases.index') }}">Đơn nhập</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>

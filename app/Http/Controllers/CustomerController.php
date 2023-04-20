@@ -16,14 +16,15 @@ class CustomerController extends Controller
     {
         if ($request->query('search')) {
             $searchTerm = $request->query('search');
-            $customers = Customer::where('name', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('id', $searchTerm)
-                ->orWhere('address', 'LIKE', "%{$searchTerm}%")
-                ->orWhere('phone', 'LIKE', "%{$searchTerm}%")
-                ->simplePaginate(20);
+            $customers = Customer::where('type', 'customer')->where(function ($query) use ($searchTerm) {
+                $query->where('name', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('id', $searchTerm)
+                    ->orWhere('address', 'LIKE', "%{$searchTerm}%")
+                    ->orWhere('phone', 'LIKE', "%{$searchTerm}%");
+            })->simplePaginate(20);
             $condition = 'search';
         } else {
-            $customers = Customer::latest()->simplePaginate(20);
+            $customers = Customer::where('type', 'customer')->latest()->simplePaginate(20);
             $condition = '';
         }
         return view('customer.index')->with('customers', $customers)->with('condition', $condition)->with('success', 'abc');

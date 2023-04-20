@@ -3909,7 +3909,7 @@ fieldset:disabled .btn {
     position: absolute;
     z-index: 1000;
     display: none;
-    min-width: 10rem;
+    min-width: 12rem;
     padding: .5rem 0;
     margin: 0;
     font-size: 1rem;
