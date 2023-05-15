@@ -99,6 +99,13 @@ class CartController extends Controller
     public function index()
     {
         $cart = cart::find(1);
+        if ($cart == null) {
+            $memory = new cart;
+            $memory->id = 1;
+            $memory->name = '';
+            $memory->products = [];
+            $memory->save();
+        }
         $customer = json_decode($cart->customer);
         $products = json_decode($cart->products);
         $total = 0;

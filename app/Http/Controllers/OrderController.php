@@ -34,7 +34,7 @@ class OrderController extends Controller
             $orders = Order::where('type', 'sell')->with('orderDetail')->latest()->simplePaginate(20);
             $condition = "";
         }
-
+        // dd($orders->toArray());
         return view('order.index')->with('orders', $orders)->with('orderStatus', array('created', 'paid', 'delivered', 'done'))->with('condition', $condition);
     }
 

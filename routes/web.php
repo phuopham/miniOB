@@ -28,15 +28,23 @@ Route::resource('/orders', OrderController::class);
 Route::post('/orders/{id}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
+
 Route::resource('/purchases', PurchaseController::class);
+Route::post('/purchase/addvendor', [PurchaseController::class, 'addVendor'])->name('purchases.addVendor');
+
+Route::post('/purchase/addproduct', [PurchaseController::class, 'addProduct'])->name('purchases.addProduct');
+
+Route::post('/purchase/removeproduct', [PurchaseController::class, 'removeProduct'])->name('purchases.removeProduct');
+
+Route::get('/purchase/cancel', [PurchaseController::class, 'cancelPurchase'])->name('purchases.cancel');
 
 // Route::resource('/orderdetail', OrderDetailController::class);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
-Route::post('/addcustomer', [CartController::class, 'addCustomer'])->name('cart.addCustomer');
-Route::post('/addproducts', [CartController::class, 'addProducts'])->name('cart.addProducts');
-Route::post('/reducequantity', [CartController::class, 'reduceQuantity'])->name('cart.reduceQuantity');
-Route::post('/removeproduct', [CartController::class, 'removeProduct'])->name('cart.removeProduct');
-Route::post('/addship', [CartController::class, 'addShip'])->name('cart.addShip');
-Route::get('/cancelCart', [CartController::class, 'cancelCart'])->name('cart.cancel');
+Route::post('/cart/addcustomer', [CartController::class, 'addCustomer'])->name('cart.addCustomer');
+Route::post('/cart/addproducts', [CartController::class, 'addProducts'])->name('cart.addProducts');
+Route::post('/cart/reducequantity', [CartController::class, 'reduceQuantity'])->name('cart.reduceQuantity');
+Route::post('/cart/removeproduct', [CartController::class, 'removeProduct'])->name('cart.removeProduct');
+Route::post('/cart/addship', [CartController::class, 'addShip'])->name('cart.addShip');
+Route::get('/cart/cancelCart', [CartController::class, 'cancelCart'])->name('cart.cancel');
