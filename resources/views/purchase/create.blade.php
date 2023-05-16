@@ -53,8 +53,8 @@
                             <td>
                                 {{ $product->quantity }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $product->price }}</td>
-                            <td>{{ $product->quantity * $product->price }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $product->price / $product->quantity }}</td>
+                            <td>{{ $product->price }}</td>
                             <td>
                                 <form class="d-inline" action="{{ route('purchases.removeProduct') }}" method="post">
                                     @csrf
