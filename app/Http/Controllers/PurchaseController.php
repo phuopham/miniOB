@@ -92,7 +92,7 @@ class PurchaseController extends Controller
             $orderDetail->order_id = $order->id;
             $orderDetail->product_id = $product->id;
             $orderDetail->quantity = $product->quantity;
-            $orderDetail->price = $product->price;
+            $orderDetail->price = $product->price / $product->quantity;
             $orderDetail->save();
             $total += $product->quantity * $product->price;
         }
@@ -112,17 +112,26 @@ class PurchaseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Purchase $purchase)
+    public function edit($id)
     {
-        //
+        $vendor = Customer::find($id);
+        return view('seller.edit')->with('vendor', $vendor);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Purchase $purchase)
+    public function update(Request $request, $id)
     {
-        //
+        $vendor = Customer::find($id);
+        $vendor->name = $request->name;
+        $vendor->type = 'vendor';
+        $vendor->address = $request->address;
+        $vendor->phone = $request->phone;
+        $vendor->note = $request->note;
+        $vendor->save();
+
+        return redirect()->route('purchases.index')->with('success', 'Sửa nhà cung cấp ' . $vendor->name . ' thành công!');
     }
 
     /**
@@ -131,6 +140,19 @@ class PurchaseController extends Controller
     public function destroy(Purchase $purchase)
     {
         //
+    }
+
+    public function createVendor(Request $request)
+    {
+        $vendor = new Customer;
+        $vendor->name = $request->name;
+        $vendor->type = 'vendor';
+        $vendor->address = $request->address;
+        $vendor->phone = $request->phone;
+        $vendor->note = $request->note;
+        $vendor->save();
+
+        return redirect()->route('purchases.index')->with('success', 'Thêm nhà cung cấp ' . $vendor->name . ' thành công!');
     }
 
     public function addVendor(Request $request)

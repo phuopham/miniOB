@@ -51,17 +51,7 @@
                             <td class="d-none d-sm-table-cell">{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
                             <td>
-                                {{-- <form class="d-inline" action="{{ route('cart.reduceQuantity') }}" method="post">
-                                    @csrf
-                                    <input type="text" name="product" hidden value='{{ json_encode($product) }}'>
-                                    <button class="btn btn-danger">-</button>
-                                </form> --}}
                                 {{ $product->quantity }}
-                                {{-- <form class="d-inline" action="{{ route('cart.addProducts') }}" method="post">
-                                    @csrf
-                                    <input type="text" name="products" hidden value='{{ json_encode($product) }}'>
-                                    <button class="btn btn-danger">+</button>
-                                </form> --}}
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $product->price }}</td>
                             <td>{{ $product->quantity * $product->price }}</td>

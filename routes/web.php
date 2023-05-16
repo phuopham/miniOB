@@ -30,6 +30,9 @@ Route::resource('/products', ProductController::class);
 Route::resource('/customers', CustomerController::class);
 
 Route::resource('/purchases', PurchaseController::class);
+
+Route::post('/purchase/createvendor', [PurchaseController::class, 'createVendor'])->name('purchases.createVendor');
+
 Route::post('/purchase/addvendor', [PurchaseController::class, 'addVendor'])->name('purchases.addVendor');
 
 Route::post('/purchase/addproduct', [PurchaseController::class, 'addProduct'])->name('purchases.addProduct');

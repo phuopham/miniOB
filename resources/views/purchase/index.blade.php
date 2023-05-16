@@ -123,17 +123,34 @@
         </div>
         <div class="col-lg-4">
             <h4>Nhà cung cấp</h4>
-            <div class="d-none d-md-flex justify-content-end">
-                <a href="{{ route('purchases.create') }}">Tạo đơn mới -></a>
+            <div class="d-none d-md-flex justify-content-end mb-2">
+                <a class="btn btn-primary" href="{{ route('purchases.create') }}">Tạo đơn mới</a>
             </div>
             <ol>
                 @foreach ($vendors as $vendor)
-                    <li class="border rounded-3 shadow-lg p-2"><b class="fs-5">{{ $vendor->name }} </b><br> SĐT:
-                        {{ $vendor->phone }}
-                        <br>
-                        {{ $vendor->address }} <br> {{ $vendor->note }}
+                    <li class="border rounded-3 shadow-lg p-2 mb-3 d-lg-flex align-items-center justify-content-between">
+                        <div>
+                            <b class="fs-5">{{ $vendor->name }} </b><br> SĐT:
+                            {{ $vendor->phone }}
+                            <br>
+                            {{ $vendor->address }} <br> {{ $vendor->note }}
+                        </div>
+                        <div>
+                            <a href="{{ route('purchases.edit', $vendor->id) }}">Sửa -></a>
+                        </div>
                     </li>
                 @endforeach
+                <div class="border rounded-3 shadow-lg p-2">
+                    <form action="{{ route('purchases.createVendor') }}" method="POST">
+                        @csrf
+                        <input type="text" class="form-control w-100" name="name" placeholder="Tên nhà cung cấp">
+                        <input type="text" class="form-control w-100" name="phone" placeholder="Số điện thoại">
+                        <input type="text" class="form-control w-100" name="address" placeholder="Địa chỉ"
+                            id="">
+
+                        <button type="submit" class="btn btn-primary">Thêm nhà cung cấp</button>
+                    </form>
+                </div>
             </ol>
         </div>
     </div>
